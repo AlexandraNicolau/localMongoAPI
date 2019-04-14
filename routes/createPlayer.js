@@ -14,7 +14,7 @@ router.post("/", async function(req, res, next) {
       message: "new player has been created",
       data: { newPlayer }
     });
-  } catch {
+  } catch (e) {
     err => console.error(err);
   }
 });

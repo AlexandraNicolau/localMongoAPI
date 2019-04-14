@@ -11,7 +11,7 @@ router.get("/:id", async function(req, res, next) {
       success: true,
       data: { player }
     });
-  } catch {
+  } catch (e) {
     err => console.error(err);
   }
 });
@@ -25,7 +25,7 @@ router.delete("/:id", async function(req, res, next) {
       success: true,
       data: { player }
     });
-  } catch {
+  } catch(e) {
     err => console.error(err);
   }
 });

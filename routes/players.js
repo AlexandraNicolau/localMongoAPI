@@ -11,7 +11,7 @@ router.get("/", async function(req, res, next) {
         data: { players }
       });
     }
-  } catch {
+  } catch (e) {
     err => console.error(err);
   }
 });
