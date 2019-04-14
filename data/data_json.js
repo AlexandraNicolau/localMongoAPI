@@ -1,4 +1,4 @@
-const footballPlayers  = [
+[
  {
    "ID": 158023,
    "Name": "L. Messi",
@@ -45090,5 +45090,3 @@ const footballPlayers  = [
    "Release Clause": "€17.1M"
  }
 ]
-
-module.exports = footballPlayers
