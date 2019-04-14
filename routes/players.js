@@ -1,11 +1,13 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 const Player = require("../models/player");
 
-router.get("/:id", async function(req, res, next) {
-  console.log(req.params.id);
+router.get("/:ID", async (req, res) => {
   try {
-    const player = await Player.findOne({ ID: req.params.id });
+    const { ID } = req.params;
+    const player = await Player.findOne({ ID });
+    // OR JUST :-
+    // const player = await Player.findOne(req.params);
     console.log(player);
     return res.json({
       success: true,
@@ -16,7 +18,7 @@ router.get("/:id", async function(req, res, next) {
   }
 });
 
-router.get("/", async function(req, res, next) {
+router.get("/", async (req, res) => {
   try {
     const players = await Player.find({});
     if (players) {
@@ -30,13 +32,15 @@ router.get("/", async function(req, res, next) {
   }
 });
 
-router.post("/", async function(req, res, next) {
+router.post("/", async (req, res) => {
   console.log(req.body);
 
   try {
     const player = new Player(req.body);
     console.log(player);
     const newPlayer = await player.save();
+    // OR - this is fine but you can also do
+    // const player = Player.create(req.body)
     return res.json({
       success: true,
       message: "new player has been created",
@@ -47,10 +51,10 @@ router.post("/", async function(req, res, next) {
   }
 });
 
-router.delete("/:id", async function(req, res, next) {
-  console.log(req.params.id);
+router.delete("/:ID", async (req, res) => {
   try {
-    const player = await Player.findOneAndDelete({ ID: req.params.id });
+    const { ID } = req.params;
+    const player = await Player.findOneAndDelete({ ID });
     console.log(player);
     return res.json({
       success: true,
